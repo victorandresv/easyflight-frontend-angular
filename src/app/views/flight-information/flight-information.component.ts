@@ -21,6 +21,10 @@ export class FlightInformationComponent {
     children: 0,
   };
 
+  public opacityForm: string = "";
+  public blockForm: boolean = false;
+  public loadingBar: boolean = false;
+
   public adultsOptions: number[] = [];
   public childrenOptions: number[] = [];
   public infantsOptions: number[] = [];
@@ -36,7 +40,15 @@ export class FlightInformationComponent {
   }
 
   public SearchAction() {
+    this.opacityForm = "opacity-form"
+    this.blockForm = true;
+    this.loadingBar = true;
     console.log(this.flightInformation)
+    setTimeout(() =>{
+      this.opacityForm = ""
+      this.blockForm = false;
+      this.loadingBar = false;
+    }, 5000);
   }
 
 }

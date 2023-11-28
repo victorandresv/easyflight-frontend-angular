@@ -1,6 +1,8 @@
-<h1>¿Where do you want to go?</h1>
+<div class="loader-line" *ngIf="loadingBar"></div>
 
-<nav aria-label="breadcrumb" class="breadcrumb">
+<h1 [ngClass]="opacityForm">¿Where do you want to go?</h1>
+
+<nav aria-label="breadcrumb" class="breadcrumb" [ngClass]="opacityForm">
     <ol class="breadcrumb">
         <li class="breadcrumb-item active">Step 1 - Flight information</li>
         <li class="breadcrumb-item">Step 2 - Destiny</li>
@@ -8,29 +10,35 @@
     </ol>
 </nav>
 
-<div class="row">
+<div class="row" [ngClass]="opacityForm">
     <div class="col col-12 col-4 col-sm-12 col-md-8 col-lg-5">
         <form class="form-search" asp-action="ConfirmOrigin">
             <h1 class="h3 mb-3 font-weight-normal">Flight information</h1>
 
             <label for="inputOrigin" class="sr-only">Origin</label>
-            <input type="text" [(ngModel)]="flightInformation.origin" id="inputOrigin" name="inputOrigin" class="form-control form-control-sm autocomplete" placeholder="Type origin city" required autofocus />
+            <input type="text" [disabled]="blockForm" [(ngModel)]="flightInformation.origin" id="inputOrigin"
+                name="inputOrigin" class="form-control form-control-sm autocomplete" placeholder="Type origin city"
+                required autofocus />
             <div id="inputOriginSelector" class="input-selector-box"></div>
             <br />
 
             <label for="inputDestiny" class="sr-only">Destiny</label>
-            <input type="text" [(ngModel)]="flightInformation.destiny" id="inputDestiny" name="inputDestiny" class="form-control form-control-sm autocomplete" placeholder="Type destiny city" required />
+            <input type="text" [disabled]="blockForm" [(ngModel)]="flightInformation.destiny" id="inputDestiny"
+                name="inputDestiny" class="form-control form-control-sm autocomplete" placeholder="Type destiny city"
+                required />
             <div id="inputDestinySelector" class="input-selector-box"></div>
             <br />
 
             <div class="row">
                 <div class="col">
                     <label for="departureDate" class="sr-only">Departure date</label>
-                    <input type="date" [(ngModel)]="flightInformation.departureDate" id="departureDate" name="departureDate" class="form-control form-control-sm" required />
+                    <input [disabled]="blockForm" type="date" [(ngModel)]="flightInformation.departureDate"
+                        id="departureDate" name="departureDate" class="form-control form-control-sm" required />
                 </div>
                 <div class="col">
                     <label for="returnDate" class="sr-only">Return date (Optional)</label>
-                    <input type="date" [(ngModel)]="flightInformation.returnDate" id="returnDate" name="returnDate" class="form-control form-control-sm" />
+                    <input [disabled]="blockForm" type="date" [(ngModel)]="flightInformation.returnDate" id="returnDate"
+                        name="returnDate" class="form-control form-control-sm" />
                 </div>
             </div>
             <br />
@@ -38,41 +46,36 @@
             <div class="row">
                 <div class="col">
                     <label for="adults" class="sr-only">Passengers <br />(adults)</label>
-                    <select 
-                        [(ngModel)]="flightInformation.adults" 
-                        name="adults" 
-                        id="adults" 
+                    <select [disabled]="blockForm" [(ngModel)]="flightInformation.adults" name="adults" id="adults"
                         class="form-control form-control-sm">
                         <option value="1" selected>1</option>
-                        <option *ngFor="let adultOption of adultsOptions" value="{{adultOption}}">{{adultOption}}</option>
+                        <option *ngFor="let adultOption of adultsOptions" value="{{adultOption}}">{{adultOption}}
+                        </option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="children" class="sr-only">Passengers <br />(children)</label>
-                    <select 
-                        [(ngModel)]="flightInformation.children" 
-                        name="children" 
-                        id="children" 
-                        class="form-control form-control-sm">
+                    <select [disabled]="blockForm" [(ngModel)]="flightInformation.children" name="children"
+                        id="children" class="form-control form-control-sm">
                         <option value="0" selected>No children</option>
-                        <option *ngFor="let childOption of childrenOptions" value="{{childOption}}">{{childOption}}</option>
+                        <option *ngFor="let childOption of childrenOptions" value="{{childOption}}">{{childOption}}
+                        </option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="infants" class="sr-only">Passengers <br />(infants)</label>
-                    <select 
-                        [(ngModel)]="flightInformation.infants" 
-                        name="infants" 
-                        id="infants" 
+                    <select [disabled]="blockForm" [(ngModel)]="flightInformation.infants" name="infants" id="infants"
                         class="form-control form-control-sm">
                         <option value="0" selected>No infants</option>
-                        <option *ngFor="let infantOption of infantsOptions" value="{{infantOption}}">{{infantOption}}</option>
+                        <option *ngFor="let infantOption of infantsOptions" value="{{infantOption}}">{{infantOption}}
+                        </option>
                     </select>
                 </div>
             </div>
             <br />
 
-            <button (click)="SearchAction()" class="btn btn-sm btn-primary btn-block" type="submit">Search flights</button>
+            <button [disabled]="blockForm" (click)="SearchAction()" class="btn btn-sm btn-primary btn-block"
+                type="submit">Search flights</button>
         </form>
     </div>
 </div>
