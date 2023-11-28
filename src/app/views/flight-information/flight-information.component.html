@@ -38,26 +38,41 @@
             <div class="row">
                 <div class="col">
                     <label for="adults" class="sr-only">Passengers <br />(adults)</label>
-                    <select [(ngModel)]="flightInformation.adults" name="adults" id="adults" class="form-control form-control-sm">
+                    <select 
+                        [(ngModel)]="flightInformation.adults" 
+                        name="adults" 
+                        id="adults" 
+                        class="form-control form-control-sm">
                         <option value="1" selected>1</option>
+                        <option *ngFor="let adultOption of adultsOptions" value="{{adultOption}}">{{adultOption}}</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="children" class="sr-only">Passengers <br />(children)</label>
-                    <select [(ngModel)]="flightInformation.children" name="children" id="children" class="form-control form-control-sm">
-                        <option value="0">No children</option>
+                    <select 
+                        [(ngModel)]="flightInformation.children" 
+                        name="children" 
+                        id="children" 
+                        class="form-control form-control-sm">
+                        <option value="0" selected>No children</option>
+                        <option *ngFor="let childOption of childrenOptions" value="{{childOption}}">{{childOption}}</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="infants" class="sr-only">Passengers <br />(infants)</label>
-                    <select [(ngModel)]="flightInformation.infants" name="infants" id="infants" class="form-control form-control-sm">
-                        <option value="0">No infants</option>
+                    <select 
+                        [(ngModel)]="flightInformation.infants" 
+                        name="infants" 
+                        id="infants" 
+                        class="form-control form-control-sm">
+                        <option value="0" selected>No infants</option>
+                        <option *ngFor="let infantOption of infantsOptions" value="{{infantOption}}">{{infantOption}}</option>
                     </select>
                 </div>
             </div>
             <br />
 
-            <button class="btn btn-sm btn-primary btn-block" type="submit">Search flights</button>
+            <button (click)="SearchAction()" class="btn btn-sm btn-primary btn-block" type="submit">Search flights</button>
         </form>
     </div>
 </div>
