@@ -14,23 +14,23 @@
             <h1 class="h3 mb-3 font-weight-normal">Flight information</h1>
 
             <label for="inputOrigin" class="sr-only">Origin</label>
-            <input type="text" id="inputOrigin" name="inputOrigin" class="form-control form-control-sm autocomplete" placeholder="Type origin city" required autofocus />
+            <input type="text" [(ngModel)]="flightInformation.origin" id="inputOrigin" name="inputOrigin" class="form-control form-control-sm autocomplete" placeholder="Type origin city" required autofocus />
             <div id="inputOriginSelector" class="input-selector-box"></div>
             <br />
 
             <label for="inputDestiny" class="sr-only">Destiny</label>
-            <input type="text" id="inputDestiny" name="inputDestiny" class="form-control form-control-sm autocomplete" placeholder="Type destiny city" required />
+            <input type="text" [(ngModel)]="flightInformation.destiny" id="inputDestiny" name="inputDestiny" class="form-control form-control-sm autocomplete" placeholder="Type destiny city" required />
             <div id="inputDestinySelector" class="input-selector-box"></div>
             <br />
 
             <div class="row">
                 <div class="col">
                     <label for="departureDate" class="sr-only">Departure date</label>
-                    <input type="date" id="departureDate" name="departureDate" class="form-control form-control-sm" required />
+                    <input type="date" [(ngModel)]="flightInformation.departureDate" id="departureDate" name="departureDate" class="form-control form-control-sm" required />
                 </div>
                 <div class="col">
                     <label for="returnDate" class="sr-only">Return date (Optional)</label>
-                    <input type="date" id="returnDate" name="returnDate" class="form-control form-control-sm" />
+                    <input type="date" [(ngModel)]="flightInformation.returnDate" id="returnDate" name="returnDate" class="form-control form-control-sm" />
                 </div>
             </div>
             <br />
@@ -38,20 +38,20 @@
             <div class="row">
                 <div class="col">
                     <label for="adults" class="sr-only">Passengers <br />(adults)</label>
-                    <select name="adults" id="adults" class="form-control form-control-sm">
+                    <select [(ngModel)]="flightInformation.adults" name="adults" id="adults" class="form-control form-control-sm">
                         <option value="1" selected>1</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="children" class="sr-only">Passengers <br />(children)</label>
-                    <select name="children" id="children" class="form-control form-control-sm">
-                        <option value="">No children</option>
+                    <select [(ngModel)]="flightInformation.children" name="children" id="children" class="form-control form-control-sm">
+                        <option value="0">No children</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="infants" class="sr-only">Passengers <br />(infants)</label>
-                    <select name="infants" id="infants" class="form-control form-control-sm">
-                        <option value="">No infants</option>
+                    <select [(ngModel)]="flightInformation.infants" name="infants" id="infants" class="form-control form-control-sm">
+                        <option value="0">No infants</option>
                     </select>
                 </div>
             </div>
