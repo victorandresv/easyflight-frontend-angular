@@ -16,10 +16,7 @@ export class FlightInformationComponent {
     origin: '',
     destiny: '',
     departureDate: '',
-    returnDate: '',
     adults: 1,
-    children: 0,
-    infants: 0
   };
 
   public ngOnInit() {
